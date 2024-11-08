@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <ul class="nav">
+    <li>
+      <a href="#/">Home</a>
+    </li>
+    <li>
+      <a href="#/">About</a>
+    </li>
+    <li>
+      <a href="#/">Contact</a>
+    </li>
+    <li>
+      <a href="#/">Server</a>
+    </li>
+    <li class="selide1"></li>
+    <li class="selide2"></li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    $(" .nav a").on("click" , function () {
+      let postion = $(this).parent().position();
+      let width = $(this).parent().width()
+      $(".nav .selide1").css({
+        opacity: 1 ,
+        left: +postion.left,
+        width: width,
+      })
+    })
+
+    $(" .nav a").on("mouseover" , function () {
+      let postion = $(this).parent().position();
+      let width = $(this).parent().width()
+      $(".nav .selide2").css({
+        opacity: 1 ,
+        left: +postion.left,
+        width: width,
+      })
+    })
+
+     $(" .nav a").on("mouseout" , function () {
+      $(".nav .selide2").css({
+       opacity: 0 ,
+     })
+
+     let correntwidth = $(this).parent("li").width()
+     let corrent = $(this).position()
+
+     $(".nav .selide2").css({
+       left: +corrent.left,
+        width: correntwidth
+     })
+   })
+  </script>
+</body>
+
+</html>
